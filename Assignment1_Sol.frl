@@ -1,0 +1,80 @@
+
+/*
+Swarna Venkata Sai, Karthik Chowdary
+*/
+
+
+
+
+
+((female Mary  ))
+((female Sandra ))
+((female Juliet ))
+((female Lisa ))
+((male Peter ))
+((male Paul ))
+((male Dick ))
+((male Bob ))
+((male Harry ))
+((parent Bob  Lisa ))
+((parent Bob  Paul ))
+((parent Bob  Mary  ))
+((parent Juliet  Lisa ))
+((parent Juliet  Paul ))
+((parent Juliet  Mary ))
+((parent Peter  Harry ))
+((parent Lisa  Harry ))
+((parent Mary   Dick ))
+((parent Mary   Sandra ))
+((brother John Bob))
+
+/* Predicates */
+((father P X)
+	(parent P X)
+	(male P)) 
+
+((mother P X)
+	(parent P X)
+	(female P)) 
+
+((sister X Y)
+	(parent P X)
+	(parent P Y)
+	(female X)
+	(negg eq X Y))
+
+((grandmother X Y)
+	(parent P Y)
+	(parent X P)
+	(female X))
+
+((brother X Y)
+	(parent P X)
+	(parent P Y)
+	(male X)
+	(negg eq X Y))
+
+((sibling X Y)
+	(parent P X)
+	(parent P Y)
+	(negg eq X Y))
+
+((cousin X Y)
+	(parent P1 X)
+	(parent P2 Y)
+	(negg eq P1 P2)
+	(sibling P1 P2)) 
+
+/* Queries */
+?((father Bob Lisa) (p "Bob is Lisa's father")(pp)(pp))
+
+?((mother Juliet Paul) (p "Juliet is Paul's mother")(pp)(pp))
+
+?((sister X Paul)(p X "is Paul's sister")(pp)(fail))  /* This lists all combinations */
+?((sister X Paul) (p X"is Paul's sister")(pp)(pp))  /* This lists only one combination */
+
+?((grandmother X Y) (p X"is a grandmother")(pp)(fail))  /* This lists all combinations */
+?((grandmother X Y) (p X"is a grandmother")(pp)(pp)) /* This lists only one combination */
+
+?((cousin X Mary) (p X "is Mary's cousin")(pp))
+?((negg cousin X Mary) (p "Mary has no cousin")(pp))
