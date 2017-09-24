@@ -77,4 +77,5 @@ Swarna Venkata Sai, Karthik Chowdary
 ?((grandmother X Y) (p X"is a grandmother")(pp)(pp)) /* This lists only one combination */
 
 ?((cousin X Mary) (p X "is Mary's cousin")(pp))
-?((negg cousin X Mary) (p "Mary has no cousin")(pp))
+?((negg cousin X Mary) (p "Mary has no cousin")(pp))/*Mary has no cousins. so to print that she doesnt have cousins we are using negg*/
+/* You can remove the negg statement above. It will still be correct*/
